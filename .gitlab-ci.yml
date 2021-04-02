@@ -1,0 +1,37 @@
+before_script:
+  - echo "Before script"
+  # - cd flagins.webdigital.vn/flagsins #your project path
+building:
+  stage: build
+  script:
+    - whoami
+    #- pwd
+    # - ls -la
+    #- ls
+    #- sudo chmod -R 777 /home/webdivn/flagins.webdigital.vn/flagsins
+    #- pwd
+    - cd /home/webdivn/flagins.webdigital.vn/flagsins #your project path
+    - git reset --hard
+    - git pull origin develop
+    #- composer install
+    - cp .env-test-1 .env
+    #- php artisan key:generate
+    #- php artisan migrate --seed
+    #- php artisan cache:clear
+    #- php artisan config:clear
+    #- php artisan storage:link
+    # - sudo chown -R webdivn:www-data /var/www/html/{your-project-name}/
+    # - find /var/www/html/{your-project-name} -type f -exec chmod 664 {} \;
+    # - find /var/www/html/{your-project-name} -type d -exec chmod 775 {} \;
+    # - chgrp -R www-data storage bootstrap/cache
+    # - chmod -R ug+rwx storage bootstrap/cache
+testing:
+  stage: test
+  script:
+    - echo "done"
+    #- php ./vendor/bin/phpunit
+deploying:
+  stage: deploy
+  script:
+    - echo "webdivn"
+    #- php artisan queue:restart #if you use queue
